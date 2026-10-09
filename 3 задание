@@ -4,7 +4,6 @@ namespace ConsoleAppTask3
 {
     public class Task3
     {
-        // 1. Числа подряд
         public string listNums(int x)
         {
             string s = "";
@@ -15,7 +14,6 @@ namespace ConsoleAppTask3
             return s.Trim();
         }
 
-        // 3. Четные числа
         public string chet(int x)
         {
             string s = "";
@@ -26,7 +24,6 @@ namespace ConsoleAppTask3
             return s.Trim();
         }
 
-        // 5. Длина числа
         public int numLen(long x)
         {
             if (x == 0) return 1;
@@ -41,7 +38,6 @@ namespace ConsoleAppTask3
             return len;
         }
 
-        // 7. Квадрат
         public void square(int x)
         {
             for (int i = 0; i < x; i++)
@@ -52,7 +48,6 @@ namespace ConsoleAppTask3
             }
         }
 
-        // 9. Правый треугольник
         public void rightTriangle(int x)
         {
             for (int i = 1; i <= x; i++)
@@ -65,40 +60,74 @@ namespace ConsoleAppTask3
             }
         }
 
+        // ================= ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ =================
+
+        private static int ReadInt(string prompt)
+        {
+            int result;
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out result))
+                {
+                    return result;
+                }
+                Console.WriteLine("Ошибка! Введите целое число.");
+            }
+        }
+
+        private static long ReadLong(string prompt)
+        {
+            long result;
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+                if (long.TryParse(input, out result))
+                {
+                    return result;
+                }
+                Console.WriteLine("Ошибка! Введите целое число.");
+            }
+        }
+
         public static void Main()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-
             Task3 t = new Task3();
 
-            Console.WriteLine("Числа подряд:");
-            Console.WriteLine("listNums(5) = " + t.listNums(5));
-            Console.WriteLine("listNums(-3) = " + t.listNums(-3));
-            Console.WriteLine();
+            Console.WriteLine("--- Задача 1. Числа подряд ---");
+            int x1 = ReadInt("Введите число x: ");
+            Console.WriteLine($"Результат: {t.listNums(x1)}");
 
-            Console.WriteLine("Четные числа:");
-            Console.WriteLine("chet(9) = " + t.chet(9));
-            Console.WriteLine("chet(-5) = " + t.chet(-5));
-            Console.WriteLine();
+            Console.WriteLine("\n--- Задача 3. Четные числа ---");
+            int x3 = ReadInt("Введите число x: ");
+            Console.WriteLine($"Результат: {t.chet(x3)}");
 
-            Console.WriteLine("Длина числа:");
-            Console.WriteLine("numLen(12567) = " + t.numLen(12567));
-            Console.WriteLine("numLen(123) = " + t.numLen(123));
-            Console.WriteLine();
+            Console.WriteLine("\n--- Задача 5. Длина числа ---");
+            long x5 = ReadLong("Введите число x: ");
+            Console.WriteLine($"Результат: {t.numLen(x5)}");
 
-            Console.WriteLine("Квадрат:");
-            Console.WriteLine("square(7):");
-            t.square(7);
-            Console.WriteLine("square(4):");
-            t.square(4);
-            Console.WriteLine();
+            Console.WriteLine("\n--- Задача 7. Квадрат ---");
+            int x7;
+            do
+            {
+                x7 = ReadInt("Введите размер квадрата (x > 0): ");
+                if (x7 <= 0) Console.WriteLine("Ошибка! Число должно быть больше 0.");
+            } while (x7 <= 0);
+            Console.WriteLine("Результат:");
+            t.square(x7);
 
-            Console.WriteLine("Правый треугольник:");
-            Console.WriteLine("rightTriangle(3):");
-            t.rightTriangle(3);
-            Console.WriteLine("rightTriangle(4):");
-            t.rightTriangle(4);
-            Console.WriteLine();
+            Console.WriteLine("\n--- Задача 9. Правый треугольник ---");
+            int x9;
+            do
+            {
+                x9 = ReadInt("Введите высоту треугольника (x > 0): ");
+                if (x9 <= 0) Console.WriteLine("Ошибка! Число должно быть больше 0.");
+            } while (x9 <= 0);
+            Console.WriteLine("Результат:");
+            t.rightTriangle(x9);
 
             Console.ReadKey();
         }
