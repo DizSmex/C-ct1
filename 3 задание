@@ -60,7 +60,7 @@ namespace ConsoleAppTask3
             }
         }
 
-        // ================= ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ =================
+        
 
         private static int ReadInt(string prompt)
         {
