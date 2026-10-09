@@ -4,13 +4,11 @@ namespace ConsoleAppTask2
 {
     public class Task2
     {
-        // 1. Модуль числа
         public int abs(int x)
         {
             return x < 0 ? -x : x;
         }
 
-        // 3. Тридцать пять
         public bool is35(int x)
         {
             bool d3 = x % 3 == 0;
@@ -18,7 +16,6 @@ namespace ConsoleAppTask2
             return (d3 || d5) && !(d3 && d5);
         }
 
-        // 5. Тройной максимум
         public int max3(int x, int y, int z)
         {
             int max = x;
@@ -27,7 +24,6 @@ namespace ConsoleAppTask2
             return max;
         }
 
-        // 7. Двойная сумма
         public int sum2(int x, int y)
         {
             int s = x + y;
@@ -35,7 +31,6 @@ namespace ConsoleAppTask2
             return s;
         }
 
-        // 9. День недели
         public string day(int x)
         {
             switch (x)
@@ -51,36 +46,58 @@ namespace ConsoleAppTask2
             }
         }
 
+        // ================= ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ =================
+
+        private static int ReadInt(string prompt)
+        {
+            int result;
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out result))
+                {
+                    return result;
+                }
+                Console.WriteLine("Ошибка! Введите целое число.");
+            }
+        }
+
         public static void Main()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-
             Task2 t = new Task2();
 
-            Console.WriteLine("Модуль числа:");
-            Console.WriteLine("abs(-3) = " + t.abs(-3));
-            Console.WriteLine("abs(5) = " + t.abs(5));
-            Console.WriteLine();
+            Console.WriteLine("--- Задача 1. Модуль числа ---");
+            int x1 = ReadInt("Введите число x: ");
+            Console.WriteLine($"Результат: {t.abs(x1)}");
 
-            Console.WriteLine("Тридцать пять:");
-            Console.WriteLine("is35(5) = " + t.is35(5));
-            Console.WriteLine("is35(15) = " + t.is35(15));
-            Console.WriteLine();
+            Console.WriteLine("\n--- Задача 3. Тридцать пять ---");
+            int x3 = ReadInt("Введите число x: ");
+            Console.WriteLine($"Результат: {t.is35(x3)}");
 
-            Console.WriteLine("Тройной максимум:");
-            Console.WriteLine("max3(5, 7, 7) = " + t.max3(5, 7, 7));
-            Console.WriteLine("max3(8, -1, 4) = " + t.max3(8, -1, 4));
-            Console.WriteLine();
+            Console.WriteLine("\n--- Задача 5. Тройной максимум ---");
+            int x5 = ReadInt("Введите число x: ");
+            int y5 = ReadInt("Введите число y: ");
+            int z5 = ReadInt("Введите число z: ");
+            Console.WriteLine($"Результат: {t.max3(x5, y5, z5)}");
 
-            Console.WriteLine("Двойная сумма:");
-            Console.WriteLine("sum2(5, 7) = " + t.sum2(5, 7));
-            Console.WriteLine("sum2(8, -1) = " + t.sum2(8, -1));
-            Console.WriteLine();
+            Console.WriteLine("\n--- Задача 7. Двойная сумма ---");
+            int x7 = ReadInt("Введите число x: ");
+            int y7 = ReadInt("Введите число y: ");
+            Console.WriteLine($"Результат: {t.sum2(x7, y7)}");
 
-            Console.WriteLine("День недели:");
-            Console.WriteLine("day(5) = " + t.day(5));
-            Console.WriteLine("day(0) = " + t.day(0));
-            Console.WriteLine();
+            Console.WriteLine("\n--- Задача 9. День недели ---");
+            int x9;
+            do
+            {
+                x9 = ReadInt("Введите число от 1 до 7: ");
+                if (x9 < 1 || x9 > 7)
+                {
+                    Console.WriteLine("Ошибка! Число должно быть от 1 до 7.");
+                }
+            } while (x9 < 1 || x9 > 7);
+            Console.WriteLine($"Результат: {t.day(x9)}");
 
             Console.ReadKey();
         }
