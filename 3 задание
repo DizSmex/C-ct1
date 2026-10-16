@@ -60,72 +60,35 @@ namespace ConsoleAppTask3
             }
         }
 
-        
-
-        private static int ReadInt(string prompt)
-        {
-            int result;
-            while (true)
-            {
-                Console.Write(prompt);
-                string input = Console.ReadLine();
-                if (int.TryParse(input, out result))
-                {
-                    return result;
-                }
-                Console.WriteLine("Ошибка! Введите целое число.");
-            }
-        }
-
-        private static long ReadLong(string prompt)
-        {
-            long result;
-            while (true)
-            {
-                Console.Write(prompt);
-                string input = Console.ReadLine();
-                if (long.TryParse(input, out result))
-                {
-                    return result;
-                }
-                Console.WriteLine("Ошибка! Введите целое число.");
-            }
-        }
-
         public static void Main()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             Task3 t = new Task3();
 
             Console.WriteLine("--- Задача 1. Числа подряд ---");
-            int x1 = ReadInt("Введите число x: ");
+            Console.Write("Введите число x: ");
+            int x1 = int.Parse(Console.ReadLine());
             Console.WriteLine($"Результат: {t.listNums(x1)}");
 
             Console.WriteLine("\n--- Задача 3. Четные числа ---");
-            int x3 = ReadInt("Введите число x: ");
+            Console.Write("Введите число x: ");
+            int x3 = int.Parse(Console.ReadLine());
             Console.WriteLine($"Результат: {t.chet(x3)}");
 
             Console.WriteLine("\n--- Задача 5. Длина числа ---");
-            long x5 = ReadLong("Введите число x: ");
+            Console.Write("Введите число x: ");
+            long x5 = long.Parse(Console.ReadLine());
             Console.WriteLine($"Результат: {t.numLen(x5)}");
 
             Console.WriteLine("\n--- Задача 7. Квадрат ---");
-            int x7;
-            do
-            {
-                x7 = ReadInt("Введите размер квадрата (x > 0): ");
-                if (x7 <= 0) Console.WriteLine("Ошибка! Число должно быть больше 0.");
-            } while (x7 <= 0);
+            Console.Write("Введите размер квадрата: ");
+            int x7 = int.Parse(Console.ReadLine());
             Console.WriteLine("Результат:");
             t.square(x7);
 
             Console.WriteLine("\n--- Задача 9. Правый треугольник ---");
-            int x9;
-            do
-            {
-                x9 = ReadInt("Введите высоту треугольника (x > 0): ");
-                if (x9 <= 0) Console.WriteLine("Ошибка! Число должно быть больше 0.");
-            } while (x9 <= 0);
+            Console.Write("Введите высоту треугольника: ");
+            int x9 = int.Parse(Console.ReadLine());
             Console.WriteLine("Результат:");
             t.rightTriangle(x9);
 
