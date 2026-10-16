@@ -46,57 +46,40 @@ namespace ConsoleAppTask2
             }
         }
 
-        
-
-        private static int ReadInt(string prompt)
-        {
-            int result;
-            while (true)
-            {
-                Console.Write(prompt);
-                string input = Console.ReadLine();
-                if (int.TryParse(input, out result))
-                {
-                    return result;
-                }
-                Console.WriteLine("Ошибка! Введите целое число.");
-            }
-        }
-
         public static void Main()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             Task2 t = new Task2();
 
             Console.WriteLine("--- Задача 1. Модуль числа ---");
-            int x1 = ReadInt("Введите число x: ");
+            Console.Write("Введите число x: ");
+            int x1 = int.Parse(Console.ReadLine());
             Console.WriteLine($"Результат: {t.abs(x1)}");
 
             Console.WriteLine("\n--- Задача 3. Тридцать пять ---");
-            int x3 = ReadInt("Введите число x: ");
+            Console.Write("Введите число x: ");
+            int x3 = int.Parse(Console.ReadLine());
             Console.WriteLine($"Результат: {t.is35(x3)}");
 
             Console.WriteLine("\n--- Задача 5. Тройной максимум ---");
-            int x5 = ReadInt("Введите число x: ");
-            int y5 = ReadInt("Введите число y: ");
-            int z5 = ReadInt("Введите число z: ");
+            Console.Write("Введите число x: ");
+            int x5 = int.Parse(Console.ReadLine());
+            Console.Write("Введите число y: ");
+            int y5 = int.Parse(Console.ReadLine());
+            Console.Write("Введите число z: ");
+            int z5 = int.Parse(Console.ReadLine());
             Console.WriteLine($"Результат: {t.max3(x5, y5, z5)}");
 
             Console.WriteLine("\n--- Задача 7. Двойная сумма ---");
-            int x7 = ReadInt("Введите число x: ");
-            int y7 = ReadInt("Введите число y: ");
+            Console.Write("Введите число x: ");
+            int x7 = int.Parse(Console.ReadLine());
+            Console.Write("Введите число y: ");
+            int y7 = int.Parse(Console.ReadLine());
             Console.WriteLine($"Результат: {t.sum2(x7, y7)}");
 
             Console.WriteLine("\n--- Задача 9. День недели ---");
-            int x9;
-            do
-            {
-                x9 = ReadInt("Введите число от 1 до 7: ");
-                if (x9 < 1 || x9 > 7)
-                {
-                    Console.WriteLine("Ошибка! Число должно быть от 1 до 7.");
-                }
-            } while (x9 < 1 || x9 > 7);
+            Console.Write("Введите число от 1 до 7: ");
+            int x9 = int.Parse(Console.ReadLine());
             Console.WriteLine($"Результат: {t.day(x9)}");
 
             Console.ReadKey();
