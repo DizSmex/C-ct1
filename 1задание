@@ -33,89 +33,41 @@ public class Task1
         return a == b && b == c;
     }
 
-    
-
-    private static double ReadDouble(string prompt)
-    {
-        double result;
-        while (true)
-        {
-            Console.Write(prompt);
-            string input = Console.ReadLine();
-            if (double.TryParse(input, out result))
-            {
-                return result;
-            }
-            Console.WriteLine("Ошибка! Введите вещественное число.");
-        }
-    }
-
-    private static int ReadInt(string prompt)
-    {
-        int result;
-        while (true)
-        {
-            Console.Write(prompt);
-            string input = Console.ReadLine();
-            if (int.TryParse(input, out result))
-            {
-                return result;
-            }
-            Console.WriteLine("Ошибка! Введите целое число.");
-        }
-    }
-
-    private static char ReadChar(string prompt)
-    {
-        while (true)
-        {
-            Console.Write(prompt);
-            string input = Console.ReadLine();
-            if (input.Length == 1)
-            {
-                return input[0];
-            }
-            Console.WriteLine("Ошибка! Введите один символ.");
-        }
-    }
-
     public static void Main()
     {
-        Console.OutputEncoding = System.Text.Encoding.UTF8;
         Task1 t = new Task1();
 
-        Console.WriteLine("--- Задача 1. Дробная часть ---");
-        double x1 = ReadDouble("Введите число x: ");
-        Console.WriteLine($"Результат: {t.fraction(x1)}");
+        // 1
+        Console.Write("Введите число: ");
+        double x = double.Parse(Console.ReadLine());
+        Console.WriteLine($"Дробная часть: {t.fraction(x)}");
 
-        Console.WriteLine("\n--- Задача 3. Букву в число ---");
-        char c1;
-        do
-        {
-            c1 = ReadChar("Введите цифру от '0' до '9': ");
-            if (c1 < '0' || c1 > '9')
-            {
-                Console.WriteLine("Ошибка! Символ должен быть цифрой.");
-            }
-        } while (c1 < '0' || c1 > '9');
-        Console.WriteLine($"Результат: {t.charToNum(c1)}");
+        // 3
+        Console.Write("Введите цифру: ");
+        char c = Console.ReadLine()[0];
+        Console.WriteLine($"Число: {t.charToNum(c)}");
 
-        Console.WriteLine("\n--- Задача 5. Двузначное ---");
-        int x5 = ReadInt("Введите число x: ");
-        Console.WriteLine($"Результат: {t.is2Digits(x5)}");
+        // 5
+        Console.Write("Введите число: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.WriteLine($"Двузначное: {t.is2Digits(n)}");
 
-        Console.WriteLine("\n--- Задача 7. Диапазон ---");
-        int a7 = ReadInt("Введите границу a: ");
-        int b7 = ReadInt("Введите границу b: ");
-        int num7 = ReadInt("Введите число num: ");
-        Console.WriteLine($"Результат: {t.isInRange(a7, b7, num7)}");
+        // 7
+        Console.Write("Введите a: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите b: ");
+        int b = int.Parse(Console.ReadLine());
+        Console.Write("Введите num: ");
+        int num = int.Parse(Console.ReadLine());
+        Console.WriteLine($"В диапазоне: {t.isInRange(a, b, num)}");
 
-        Console.WriteLine("\n--- Задача 9. Равенство ---");
-        int a9 = ReadInt("Введите число a: ");
-        int b9 = ReadInt("Введите число b: ");
-        int c9 = ReadInt("Введите число c: ");
-        Console.WriteLine($"Результат: {t.isEqual(a9, b9, c9)}");
-
-        Console.ReadKey();
+        // 9
+        Console.Write("Введите a: ");
+        int e1 = int.Parse(Console.ReadLine());
+        Console.Write("Введите b: ");
+        int e2 = int.Parse(Console.ReadLine());
+        Console.Write("Введите c: ");
+        int e3 = int.Parse(Console.ReadLine());
+        Console.WriteLine($"Равны: {t.isEqual(e1, e2, e3)}");
     }
 }
