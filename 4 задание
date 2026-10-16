@@ -56,29 +56,14 @@ public class Task4
         return res;
     }
 
-    // ================= ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ =================
-
-    private static int ReadInt(string prompt)
-    {
-        int result;
-        while (true)
-        {
-            Console.Write(prompt);
-            string input = Console.ReadLine();
-            if (int.TryParse(input, out result))
-            {
-                return result;
-            }
-            Console.WriteLine("Ошибка! Введите целое число.");
-        }
-    }
 
     private static int[] ReadArray(int size)
     {
         int[] arr = new int[size];
         for (int i = 0; i < size; i++)
         {
-            arr[i] = ReadInt($"arr[{i}] = ");
+            Console.Write($"arr[{i}] = ");
+            arr[i] = int.Parse(Console.ReadLine());
         }
         return arr;
     }
@@ -89,35 +74,44 @@ public class Task4
         Task4 t = new Task4();
 
         Console.WriteLine("--- Задача 1. Поиск первого значения ---");
-        int size1 = ReadInt("Введите размер массива: ");
+        Console.Write("Введите размер массива: ");
+        int size1 = int.Parse(Console.ReadLine());
         int[] arr1 = ReadArray(size1);
-        int x1 = ReadInt("Введите число x: ");
+        Console.Write("Введите число x: ");
+        int x1 = int.Parse(Console.ReadLine());
         Console.WriteLine($"Результат: {t.findFirst(arr1, x1)}");
 
         Console.WriteLine("\n--- Задача 3. Поиск максимального по модулю ---");
-        int size3 = ReadInt("Введите размер массива: ");
+        Console.Write("Введите размер массива: ");
+        int size3 = int.Parse(Console.ReadLine());
         int[] arr3 = ReadArray(size3);
         Console.WriteLine($"Результат: {t.maxAbs(arr3)}");
 
         Console.WriteLine("\n--- Задача 5. Добавление массива в массив ---");
-        int size5 = ReadInt("Введите размер первого массива: ");
+        Console.Write("Введите размер первого массива: ");
+        int size5 = int.Parse(Console.ReadLine());
         int[] arr5 = ReadArray(size5);
-        int size5b = ReadInt("Введите размер второго массива: ");
+        Console.Write("Введите размер второго массива: ");
+        int size5b = int.Parse(Console.ReadLine());
         int[] ins5 = ReadArray(size5b);
-        int pos5 = ReadInt("Введите позицию для вставки: ");
+        Console.Write("Введите позицию для вставки: ");
+        int pos5 = int.Parse(Console.ReadLine());
         int[] res5 = t.add(arr5, ins5, pos5);
         Console.WriteLine($"Результат: [{string.Join(", ", res5)}]");
 
         Console.WriteLine("\n--- Задача 7. Возвратный реверс ---");
-        int size7 = ReadInt("Введите размер массива: ");
+        Console.Write("Введите размер массива: ");
+        int size7 = int.Parse(Console.ReadLine());
         int[] arr7 = ReadArray(size7);
         int[] res7 = t.reverseBack(arr7);
         Console.WriteLine($"Результат: [{string.Join(", ", res7)}]");
 
         Console.WriteLine("\n--- Задача 9. Все вхождения ---");
-        int size9 = ReadInt("Введите размер массива: ");
+        Console.Write("Введите размер массива: ");
+        int size9 = int.Parse(Console.ReadLine());
         int[] arr9 = ReadArray(size9);
-        int x9 = ReadInt("Введите число x: ");
+        Console.Write("Введите число x: ");
+        int x9 = int.Parse(Console.ReadLine());
         int[] res9 = t.findAll(arr9, x9);
         Console.WriteLine($"Результат: [{string.Join(", ", res9)}]");
 
